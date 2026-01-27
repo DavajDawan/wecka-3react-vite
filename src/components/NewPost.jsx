@@ -1,3 +1,11 @@
+// userState
+// React has its own set to catch changes of our parameters state
+// which React sync automatically between ReactDom and WE Browser DOM
+// to use this React hook useState we need to import it first
+// then set the default value for this state in userState par.
+// and catch return into const array object has our parameter and function
+// we should use to set the change
+import { useState } from 'react';
 import classes from './NewPost.module.css';
 
 function NewPost() {
@@ -10,23 +18,34 @@ function NewPost() {
     // case we manage , as in our example changeBodyHandler
     // can clearly explain it self as handler to change event of our
     // text area id assigned body into our code below
-    let enteredBody = '';
+
+    //let enteredBody ='';
+    const [enteredBody, setEnteredBody] = useState('');
+    const [EnteredAuthor, setEnteredAuthor] = useState('');
+
     function changeBodyHandler(event) {
         //console.log(event.target.value);
-        enteredBody = event.target.value;
-        console.log("enteredBody" + enteredBody);
+        //enteredBody = event.target.value;
+        //console.log("enteredBody" + enteredBody);
+        setEnteredBody(event.target.value);
     }
+
+    function changeAuthorHandler(event) {
+        setEnteredAuthor(event.target.value);
+    }
+
     return (
         <form className={classes.form}>
             <p>
                 <label htmlFor="body">Text / Body </label>
                 <textarea id="body" required rows={3} onChange={changeBodyHandler} />
             </p>
-            <p>{enteredBody}</p>
+
             <p>
                 <label htmlFor="name">Your name /Author name</label>
-                <input type="text" id="name" required />
+                <input type="text" id="name" required onChange={changeAuthorHandler} />
             </p>
+
         </form>
     );
 
