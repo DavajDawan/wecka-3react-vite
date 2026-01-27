@@ -1,11 +1,10 @@
-import Post from "./components/Post";
+import PostList from "./components/PostList";
 
 function App() {
   //return <Post />;
   return (
     <main>
-      <Post author="Ammar" body="React is great!" />
-      <Post author="Johan" body="NO I like Vue more!" />
+      <PostList />
     </main>
   )
 }
