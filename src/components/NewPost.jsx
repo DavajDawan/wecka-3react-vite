@@ -5,10 +5,11 @@
 // then set the default value for this state in userState par.
 // and catch return into const array object has our parameter and function
 // we should use to set the change
-import { useState } from 'react';
+
+//import { useState } from 'react';
 import classes from './NewPost.module.css';
 
-function NewPost() {
+function NewPost({ onBodyChange, onAuthorChange }) {
     // To get changes in our text area html element
     // using react framework we need to add
     // in related element html code React catcher of changes
@@ -20,30 +21,30 @@ function NewPost() {
     // text area id assigned body into our code below
 
     //let enteredBody ='';
-    const [enteredBody, setEnteredBody] = useState('');
-    const [EnteredAuthor, setEnteredAuthor] = useState('');
+    //const [enteredBody ,setEnteredBody ]= useState('');
+    //const [EnteredAuthor , setEnteredAuthor]=useState('');
 
-    function changeBodyHandler(event) {
+    /*function changeBodyHandler(event){
         //console.log(event.target.value);
         //enteredBody = event.target.value;
         //console.log("enteredBody" + enteredBody);
         setEnteredBody(event.target.value);
     }
 
-    function changeAuthorHandler(event) {
+    function changeAuthorHandler(event){
         setEnteredAuthor(event.target.value);
-    }
+    }*/
 
     return (
         <form className={classes.form}>
             <p>
                 <label htmlFor="body">Text / Body </label>
-                <textarea id="body" required rows={3} onChange={changeBodyHandler} />
+                <textarea id="body" required rows={3} onChange={onBodyChange} />
             </p>
 
             <p>
                 <label htmlFor="name">Your name /Author name</label>
-                <input type="text" id="name" required onChange={changeAuthorHandler} />
+                <input type="text" id="name" required onChange={onAuthorChange} />
             </p>
 
         </form>
