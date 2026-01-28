@@ -14,19 +14,19 @@ import { useState } from 'react';
 import Modal from './Modal';
 
 function PostList({ isPosting, onStopPosting }) {
-    // Lift useState
-    const [enteredBody, setEnteredBody] = useState('');
-    const [EnteredAuthor, setEnteredAuthor] = useState('');
+    // Lift useState- We move them to newPost
+    /* const [enteredBody, setEnteredBody] = useState('');
+    const [EnteredAuthor, setEnteredAuthor] = useState(''); */
 
     // To control Modal we to lift it to App.jsx after adding MainHeader
     //const [modalIsVisible, setModalIsVisible] = useState(true);
     //lift handler(s) of useState
-    function changeBodyHandler(event) {
-        setEnteredBody(event.target.value);
-    }
-    function changeAuthorHandler(event) {
-        setEnteredAuthor(event.target.value);
-    }
+    /*    function changeBodyHandler(event) {
+           setEnteredBody(event.target.value);
+       }
+       function changeAuthorHandler(event) {
+           setEnteredAuthor(event.target.value);
+       } */
 
     //lift with useState
     /*  function hideModalHandler() {
@@ -49,14 +49,13 @@ function PostList({ isPosting, onStopPosting }) {
 
             {isPosting && (
                 <Modal onClose={onStopPosting}>
-                    <NewPost onBodyChange={changeBodyHandler}
-                        onAuthorChange={changeAuthorHandler} />
+                    <NewPost onCancel={onStopPosting} />
                 </Modal>
             )}
             <ul className={classes.posts}>
+                {/* <Post author={EnteredAuthor} body={enteredBody} />
                 <Post author={EnteredAuthor} body={enteredBody} />
-                <Post author={EnteredAuthor} body={enteredBody} />
-                <Post author={EnteredAuthor} body={enteredBody} />
+                <Post author={EnteredAuthor} body={enteredBody} /> */}
 
             </ul>
         </>

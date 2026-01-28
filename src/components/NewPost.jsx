@@ -6,10 +6,10 @@
 // and catch return into const array object has our parameter and function
 // we should use to set the change
 
-//import { useState } from 'react';
+import { useState } from 'react';
 import classes from './NewPost.module.css';
 
-function NewPost({ onBodyChange, onAuthorChange }) {
+function NewPost({ onCancel }) {
     // To get changes in our text area html element
     // using react framework we need to add
     // in related element html code React catcher of changes
@@ -34,17 +34,37 @@ function NewPost({ onBodyChange, onAuthorChange }) {
     function changeAuthorHandler(event){
         setEnteredAuthor(event.target.value);
     }*/
+    const [enteredBody, setEnteredBody] = useState('');
+    const [EnteredAuthor, setEnteredAuthor] = useState('');
 
+    function changeBodyHandler(event) {
+        setEnteredBody(event.target.value);
+    }
+    function changeAuthorHandler(event) {
+        setEnteredAuthor(event.target.value);
+    }
+    function submitHandler(event) {
+        event.preventDefault();
+        const postData = {
+            body: enteredBody,
+            author: EnteredAuthor
+        }
+        console.log(postData);
+        onCancel();
+    }
     return (
-        <form className={classes.form}>
+        <form className={classes.form} onSubmit={submitHandler}>
             <p>
                 <label htmlFor="body">Text / Body </label>
-                <textarea id="body" required rows={3} onChange={onBodyChange} />
+                <textarea id="body" required rows={3} onChange={changeBodyHandler} />
             </p>
 
             <p>
                 <label htmlFor="name">Your name /Author name</label>
-                <input type="text" id="name" required onChange={onAuthorChange} />
+                <input type="text" id="name" required onChange={changeAuthorHandler} />
+            </p>
+            <p><button type='button' onClick={onCancel}>Cancel</button>
+                <button >Submit</button>
             </p>
 
         </form>
